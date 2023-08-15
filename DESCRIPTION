@@ -1,0 +1,13 @@
+Package: lazyQ
+Title: Easy Calculation of qPCR Results from QuantStudio Output Tables
+Version: 1.0.0
+Authors@R: 
+    person("Gabriel", "Valbuena", , "gabriel@well.ox.ac.uk", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-6825-7214"))
+Description: What the package does (one paragraph).
+License: GPL (>= 2)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports:
+    readxl
