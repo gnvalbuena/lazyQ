@@ -1,3 +1,4 @@
+#' @export
 analyzeQ.CT <- function(readqtable, housekeepinggene){
 
   workingtable <- readqtable
@@ -82,6 +83,7 @@ analyzeQ.CT <- function(readqtable, housekeepinggene){
 
 }
 
+#' @export
 analyzeQ.ddCT <- function(target.table, control.samples){
 
   workingtable <- cbind(Sample.Name = target.table[,1],
@@ -105,6 +107,16 @@ analyzeQ.ddCT <- function(target.table, control.samples){
 
 }
 
+#' @export
+analyzeQ <- function(readqtable, housekeepinggene, control.samples){
+
+  target.table <- analyzeQ.CT(readqtable, housekeepinggene)
+
+  ddCT.table <- analyzeQ.ddCT(target.table, control.samples)
+
+  return(ddCT.table)
+
+}
 
 
 

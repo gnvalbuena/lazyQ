@@ -1,9 +1,10 @@
+#' @export
 readQ.file <- function(x){
 
   filebase <- basename(x)
 
   outtable <- data.frame(file = filebase,
-                         read_excel(path = x, sheet = "Results", skip = 46))
+                         readxl::read_excel(path = x, sheet = "Results", skip = 46))
 
   outtable$CT[outtable$CT == "Undetermined"] <- NA
   outtable$CT <- as.numeric(outtable$CT)
@@ -12,6 +13,7 @@ readQ.file <- function(x){
 
 }
 
+#' @export
 readQ.list <- function(filelist){
 
   outtable <- lapply(1:length(filelist), function(filenumber){
@@ -39,6 +41,7 @@ readQ.list <- function(filelist){
 
 }
 
+#' @export
 readQ <- function(x){
 
   if(file_test("-d", x)){
