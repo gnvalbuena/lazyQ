@@ -66,3 +66,8 @@ readQ <- function(x){
 
 }
 
+#' @export
+importCheck <- function(datatable){
+  samplecount <- table(datatable[,c("Sample.Name", "Target.Name")])
+  return(samplecount)
+}

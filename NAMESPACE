@@ -3,6 +3,7 @@
 export(analyzeQ)
 export(analyzeQ.CT)
 export(analyzeQ.ddCT)
+export(importCheck)
 export(readQ)
 export(readQ.file)
 export(readQ.list)
