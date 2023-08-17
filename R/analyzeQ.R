@@ -1,3 +1,14 @@
+#' Calculate deltaCT values from imported QuantStudio data
+#'
+#' This function calculates mean CT values for housekeeping and target genes for each sample
+#' and deltaCT values
+#'
+#' @usage analyzeQ.CT(readqtable, housekeepinggene)
+#'
+#' @param readqtable Imported data table from `readQ()` and associated functions
+#' @param housekeepinggene character string containing housekeeping gene name
+#' @return A table of CT measurements, mean, and SD of housekeeping genes and target genes for each samples, as well as the deltaCT between target and housekeeping genes
+#'
 #' @export
 analyzeQ.CT <- function(readqtable, housekeepinggene){
 
@@ -83,6 +94,17 @@ analyzeQ.CT <- function(readqtable, housekeepinggene){
 
 }
 
+#' Calculate delta-deltaCT values from deltaCT values
+#'
+#' This function calculates delta-delta CT values and fold changes for each sample
+#' relative to the mean of a set of control samples
+#'
+#' @usage analyzeQ.ddCT(target.table, control.samples = c("Control_1", "Control_2", "Control_3"))
+#'
+#' @param target.table Processed data table from `analyzeQ.CT()`
+#' @param control.samples vector of control sample names
+#' @return A table of calculateed delta-deltaCT values and fold changes appended to the `target.table`
+#'
 #' @export
 analyzeQ.ddCT <- function(target.table, control.samples){
 
@@ -107,6 +129,19 @@ analyzeQ.ddCT <- function(target.table, control.samples){
 
 }
 
+#' Calculate delta-deltaCT values from imported QuantStudio data
+#'
+#' This function calculates mean CT values for housekeeping and target genes for each sample
+#' and deltaCT values from imported QuantStudio data, then calculates delta-delta CT values and fold changes
+#' for each sample relative to the mean of a set of control samples
+#'
+#' @usage analyzeQ(target.table, housekeepinggene, control.samples = c("Control_1", "Control_2", "Control_3"))
+#'
+#' @param target.table Processed data table from `analyzeQ.CT()`
+#' @param housekeepinggene character string containing housekeeping gene name
+#' @param control.samples vector of control sample names
+#' @return A table of CT values, deltaCT, calculated delta-deltaCT values and fold changes for each gene for each sample
+#'
 #' @export
 analyzeQ <- function(readqtable, housekeepinggene, control.samples){
 
@@ -117,9 +152,5 @@ analyzeQ <- function(readqtable, housekeepinggene, control.samples){
   return(ddCT.table)
 
 }
-
-
-
-
 
 
