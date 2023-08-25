@@ -36,19 +36,22 @@ importCheck(rawdata)
 >  3.1. Calculate dCT relative to measurements of the reference housekeeeping gene for each sample. The dCT values will be calculated for all target genes (i.e. genes other than those specified as housekeeping). This step is currently set up for use of only one reference housekeeping gene.
 
 ```r
-dCT.table <- analyzeQ.CT(rawdata, housekeepinggene = "GAPDH")
+dCT.table <- analyzeQ.CT(rawdata,
+                         housekeepinggene = "GAPDH")
 ```
 
 > 3.2. Calculate ddCT relative to mean dCT measurements of specified control samples.
 
 ```r
-ddCT.table <- analyzeQ.ddCT(dCT.table, control.samples = c("Control_1", "Control_2", "Control_3"))
+ddCT.table <- analyzeQ.ddCT(dCT.table,
+                            control.samples = c("Control_1", "Control_2", "Control_3"))
 ```
 
 4. Alternatively, both steps in (3) can be performed as a single operation
 
 ```r
-ddCT.table <- analyzeQ(readqtable, housekeepinggene = "GAPDH",
+ddCT.table <- analyzeQ(readqtable,
+                       housekeepinggene = "GAPDH",
                        control.samples = c("Control_1", "Control_2", "Control_3"))
 ```
 
